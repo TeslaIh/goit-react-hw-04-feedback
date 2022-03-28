@@ -9,8 +9,8 @@ export default function App() {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
-  const onMakeFeedback = e => {
-    const changeValue = e.target.textContent;
+  const onMakeFeedback = event => {
+    const changeValue = event.target.textContent;
 
     switch (changeValue) {
       case 'good':
@@ -60,3 +60,4 @@ export default function App() {
     </>
   );
 }
+

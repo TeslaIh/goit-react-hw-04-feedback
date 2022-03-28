@@ -3,7 +3,7 @@ import { Button } from "./FeedbackVar.styled";
 
 export default function FeedbackVar({ options, onMakeFeedback }) {
     return Object.keys(options).map((key) => (
-        <Button key={key} type="button" onClick={() => onMakeFeedback(key)}>
+        <Button key={key} type="button" onClick={onMakeFeedback}>
             {key}
         </Button>
     ));
