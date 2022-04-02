@@ -1,14 +1,24 @@
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Button } from "./FeedbackVar.styled";
 
-export default function FeedbackVar({ options, onMakeFeedback }) {
-    return Object.keys(options).map((key) => (
-        <Button key={key} type="button" onClick={onMakeFeedback}>
-            {key}
-        </Button>
-    ));
+const FeedbackVar = ({ onMakeFeedback, options }) => {
+    return (
+      <div>
+        {options.map((label, index) => {
+          return (
+            <Button onClick={onMakeFeedback} key={index}>
+              {label}
+            </Button>
+          );
+        })}
+      </div>
+    );
 }
+
 FeedbackVar.propTypes = {
-    options: PropTypes.object.isRequired,
-    onMakeFeedback: PropTypes.func.isRequired,
-}
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onMakeFeedback: PropTypes.func.isRequired,
+};
+
+export default FeedbackVar;

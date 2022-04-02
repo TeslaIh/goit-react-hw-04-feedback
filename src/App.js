@@ -9,20 +9,18 @@ export default function App() {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
-  const onMakeFeedback = event => {
-    const changeValue = event.target.textContent;
-
-    switch (changeValue) {
+  const LeaveFeedBack = e => {
+    switch (e.currentTarget.textContent.toLowerCase()) {
       case 'good':
-        setGood(prevState => prevState + 1);
+        setGood(good + 1);
         break;
 
       case 'neutral':
-        setNeutral(prevState => prevState + 1);
+        setNeutral(neutral + 1);
         break;
 
       case 'bad':
-        setBad(prevState => prevState + 1);
+        setBad(bad + 1);
         break;
 
       default:
@@ -36,12 +34,13 @@ export default function App() {
     return Math.round((good / total) * 100);
   };
 
-  const options = { good, neutral, bad };
-
   return (
     <>
       <Section title="Leave feedback, please">
-        <FeedbackVar options={options} onMakeFeedback={onMakeFeedback} />
+        <FeedbackVar
+          options={['Good', 'Neutral', 'Bad']}
+          onMakeFeedback={LeaveFeedBack}
+        />
       </Section>
 
       <Section title="Statistic">
